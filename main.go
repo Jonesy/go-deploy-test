@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/google/uuid"
+)
 
 func main() {
-	fmt.Println("This is a test")
+	id := uuid.New()
+	fmt.Println("This is a test", id)
 }
