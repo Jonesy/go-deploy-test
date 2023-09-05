@@ -6,8 +6,10 @@ on:
       - dev
 
 jobs:
-  steps:
-    - uses: actions/checkout@v3
-    - uses: extractions/setup-just@v1
-    - uses: actions/setup-go@v4
-    - run: just test 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: extractions/setup-just@v1
+      - uses: actions/setup-go@v4
+      - run: just test 
