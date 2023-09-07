@@ -11,17 +11,8 @@ builds:
       - -X main.Version={{ .Env.MY_VERSION }}
 
 archives:
-  - format: tar.gz
-    name_template: >-
-      {{ .ProjectName }}_
-      {{- title .Os }}_
-      {{- if eq .Arch "amd64" }}x86_64
-      {{- else if eq .Arch "386" }}i386
-      {{- else }}{{ .Arch }}{{ end }}
-      {{- if .Arm }}v{{ .Arm }}{{ end }}
-    format_overrides:
-    - goos: macos
-      format: zip
+  - id: cli-archive
+    format: zip
 
 checksum:
   name_template: 'checksums.txt'
