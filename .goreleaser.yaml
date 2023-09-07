@@ -3,15 +3,12 @@ before:
     - go mod tidy
 builds:
   - binary: cli-testapp
-    format: zip
     env:
       - CGO_ENABLED=0
     goos:
-      - linux
-      - windows
       - darwin
     ldflags:
-      - -X main.ApiHost={{ .Env.MY_VERSION }}
+      - -X main.Version={{ .Env.MY_VERSION }}
 
 archives:
   - format: tar.gz
@@ -22,10 +19,7 @@ archives:
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
-    # use zip for windows archives
     format_overrides:
-    - goos: windows
-      format: zip
     - goos: macos
       format: zip
 
